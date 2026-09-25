@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kawayanan KaiMig Resort — Reservations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/landing.css">
+<link rel="stylesheet" href="css/units.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/lookup.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand" onclick="switchView('landing')">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="4" width="6" height="32" rx="3" fill="#C9A662"/>
+        <rect x="22" y="10" width="6" height="26" rx="3" fill="#5B8C5A"/>
+        <circle cx="17" cy="9" r="4" fill="#5B8C5A"/>
+        <circle cx="25" cy="15" r="4" fill="#C9A662"/>
+      </svg>
+      <div class="brand-text">
+        <div class="name">Kawayanan KaiMig</div>
+        <div class="tagline">Resort &amp; Cottages</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button id="tabHomeBtn" class="active" onclick="switchView('landing')">Home</button>
+      <button id="tabCustomerBtn" onclick="switchView('customer')">Book a Stay</button>
+      <button id="tabAdminBtn" onclick="switchView('admin')">Staff Dashboard</button>
+    </nav>
+    <div class="header-right">
+      <div class="clock" id="clock"></div>
+      <div class="auth-actions" id="authActionsLoggedOut">
+        <button class="btn btn-sm btn-outline-light" onclick="openLoginModal()">Log In</button>
+        <button class="btn btn-sm btn-light" onclick="openSignupModal()">Sign Up</button>
+      </div>
+      <div class="user-chip" id="authActionsLoggedIn" style="display:none;">
+        <span>Hi, <span class="uname" id="userChipName"></span></span>
+        <button class="btn btn-sm btn-outline-light" onclick="logoutUser()">Log Out</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== LANDING VIEW ===================== -->
+  <section id="view-landing" class="view active">
+    <div class="hero hero-photo hero-photo--landing">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Open today — live availability inside</div>
+        <h1>A bamboo grove by<br><em>the water's edge.</em></h1>
+        <p class="lede">Kawayanan KaiMig is a family-run resort of shaded bamboo cottages and cool pools, built around the idea that a good rest shouldn't need guesswork. Check what's free, reserve it, and relax.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="handleReserveCTA()">Reserve a Cottage</button>
+          <button class="btn btn-outline-light" onclick="switchView('customer')">See Live Availability</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">9</div><div class="lab">Cottages &amp; pools</div></div>
+          <div class="stat"><div class="num">10+</div><div class="lab">Guests, largest cottage</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="lab">Live status updates</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grove-divider" aria-hidden="true">
+      <div class="stalk"></div><div class="stalk"></div><div class="stalk"></div>
+      <div class="stalk"></div><div class="stalk"></div><div class="stalk"></div>
+      <div class="stalk"></div><div class="stalk"></div>
+    </div>
+
+    <div class="section-landing">
+      <div class="about-block">
+        <h2>Slower mornings, cooler afternoons</h2>
+        <p>Tucked where the bamboo groves meet the riverside, Kawayanan KaiMig has welcomed families and barkada trips for weekend swims and long lunches under the cottages. Every unit is named after the bamboo and nipa materials it's built from — a small nod to how we build, and how we like to keep things simple.</p>
+      </div>
+
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <div class="amenity-icon" style="background:var(--available-bg);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7 7 10 7 13a5 5 0 0010 0c0-3-2-6-5-10z" fill="#4C9A6A"/></svg>
+          </div>
+          <h3>Bamboo Cottages</h3>
+          <p>Six shaded cottages, from cozy nooks for two to family-sized houses that sleep ten.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon" style="background:#DCEEF0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 16c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0" stroke="#276B67" stroke-width="2" stroke-linecap="round"/><path d="M3 11c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0" stroke="#276B67" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>
+          </div>
+          <h3>Three Pools</h3>
+          <p>A kiddie pool, an adult lap pool, and the KaiMig Lagoon — our biggest and coolest.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon" style="background:var(--reserved-bg);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="9" rx="2" stroke="#C98A2C" stroke-width="2"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#C98A2C" stroke-width="2"/></svg>
+          </div>
+          <h3>Riverside Dining</h3>
+          <p>Bring your own ihaw-ihaw or order from our small kitchen — tables open by the water.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon" style="background:#F1E4E0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#B84A3E" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#B84A3E" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Events &amp; Occasions</h3>
+          <p>Book the whole grove for reunions, birthdays, and team outings — ask our staff.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-band">
+      <h2>Ready to relax?</h2>
+      <p>Create a free account to book a cottage or pool and track your reservation in real time.</p>
+      <button class="btn btn-light" onclick="openSignupModal()">Sign Up</button>
+      <button class="btn btn-outline-light" onclick="switchView('customer')">Browse Availability</button>
+    </div>
+
+    <div class="contact-row">
+      <span>Riverside Road, Bacolod City</span>
+      <span>(034) 000-0000</span>
+      <span>stay@kawayanankaimig.example</span>
+    </div>
+  </section>
+
+  <!-- ===================== CUSTOMER VIEW ===================== -->
+  <section id="view-customer" class="view">
+    <div class="section-head" style="margin-top:40px;">
+      <h2>The Grove Board</h2>
+      <div class="legend">
+        <span><i style="background:var(--available)"></i> Available</span>
+        <span><i style="background:var(--reserved)"></i> Reserved</span>
+        <span><i style="background:var(--occupied)"></i> Occupied</span>
+      </div>
+    </div>
+    <div class="sub" style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:18px;">Live status — refreshes automatically. Log in to reserve a unit.</div>
+    <div class="grid" id="customerGrid"></div>
+
+    <div id="myReservationsWrap" style="display:none;">
+      <div class="section-head">
+        <h2>My Reservations</h2>
+        <div class="sub">Saved automatically to your account</div>
+      </div>
+      <div id="myReservationsList"></div>
+    </div>
+
+    <div class="lookup-box">
+      <div class="field">
+        <label for="lookupCode">Reservation code</label>
+        <input id="lookupCode" placeholder="e.g. KKR-4F82Q">
+      </div>
+      <div class="field">
+        <label for="lookupContact">Contact number used</label>
+        <input id="lookupContact" placeholder="09xx xxx xxxx">
+      </div>
+      <button class="btn btn-primary" onclick="lookupReservation()">Find my reservation</button>
+    </div>
+    <div class="lookup-result" id="lookupResult"></div>
+  </section>
+
+  <!-- ===================== ADMIN VIEW ===================== -->
+  <section id="view-admin" class="view">
+
+    <div id="adminGate" class="gate">
+      <h2>Staff Sign-in</h2>
+      <p>Enter the staff passcode to open the dashboard. (Demo passcode: <strong>1234</strong> — for real use, this should be replaced with proper staff login.)</p>
+      <div class="field"><input type="password" id="passcodeInput" placeholder="Passcode"></div>
+      <div class="err-msg" id="gateErr">Incorrect passcode — try again.</div>
+      <button class="btn btn-primary" style="width:100%" onclick="checkPasscode()">Enter Dashboard</button>
+    </div>
+
+    <div id="adminDashboard" style="display:none;">
+      <div class="section-head" style="margin-top:32px;">
+        <h2>Live Overview</h2>
+        <div class="sub" id="lastUpdated">—</div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="n" id="admStatAvail">–</div><div class="l">Available</div></div>
+        <div class="stat-card"><div class="n" id="admStatReserved">–</div><div class="l">Reserved</div></div>
+        <div class="stat-card"><div class="n" id="admStatOccupied">–</div><div class="l">Occupied</div></div>
+        <div class="stat-card"><div class="n" id="admStatPending">–</div><div class="l">Pending requests</div></div>
+      </div>
+
+      <div class="section-head">
+        <h2>Units — Grove Board</h2>
+        <div class="sub">Tap a status chip to override manually (walk-ins, maintenance, etc.)</div>
+      </div>
+      <div class="grid" id="adminGrid"></div>
+
+      <div class="section-head">
+        <h2>Reservations</h2>
+        <div class="sub" id="resCount"></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Guest</th><th>Unit</th><th>Date</th><th>Slot</th><th>Guests</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="resTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Kawayanan KaiMig Resort — reservation &amp; live tracking system.</footer>
+
+<!-- Booking Modal -->
+<div class="overlay" id="bookingOverlay">
+  <div class="modal">
+    <button class="close-x" onclick="closeAllModals()">&times;</button>
+    <div id="bookingFormWrap">
+      <h3 id="bookingUnitName">Reserve Unit</h3>
+      <div class="modal-sub" id="bookingUnitMeta"></div>
+      <div class="field"><label for="gName">Full name</label><input id="gName" placeholder="Juan Dela Cruz"></div>
+      <div class="field"><label for="gContact">Contact number</label><input id="gContact" placeholder="09xx xxx xxxx"></div>
+      <div class="field-row">
+        <div class="field"><label for="gDate">Date</label><input type="date" id="gDate"></div>
+        <div class="field"><label for="gGuests">Guests</label><input type="number" id="gGuests" min="1" value="2"></div>
+      </div>
+      <div class="field">
+        <label for="gSlot">Time slot</label>
+        <select id="gSlot">
+          <option value="Morning (8AM-12NN)">Morning (8AM-12NN)</option>
+          <option value="Afternoon (1PM-5PM)">Afternoon (1PM-5PM)</option>
+          <option value="Whole Day (8AM-5PM)">Whole Day (8AM-5PM)</option>
+          <option value="Overnight (2PM-10AM)">Overnight (2PM-10AM)</option>
+        </select>
+      </div>
+      <div class="err-msg" id="bookingErr">Please fill in all fields.</div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeAllModals()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitBooking()">Confirm Reservation</button>
+      </div>
+    </div>
+    <div id="bookingConfirmWrap" style="display:none;" class="confirm-box">
+      <h3>Reservation requested!</h3>
+      <p class="modal-sub">Show this code at the front desk. Staff will confirm your slot shortly.</p>
+      <div class="code" id="confirmCode"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="closeAllModals()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal">
+    <button class="close-x" onclick="closeAllModals()">&times;</button>
+    <h3>Log In</h3>
+    <div class="modal-sub">Welcome back to Kawayanan KaiMig.</div>
+    <div class="field"><label for="liEmail">Email</label><input type="email" id="liEmail" placeholder="you@example.com"></div>
+    <div class="field"><label for="liPass">Password</label><input type="password" id="liPass" placeholder="********"></div>
+    <div class="err-msg" id="loginErr">Incorrect email or password.</div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" style="width:100%" onclick="loginUser()">Log In</button>
+    </div>
+    <div class="switch-line">New here? <button onclick="openSignupModal()">Create an account</button></div>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="overlay" id="signupOverlay">
+  <div class="modal">
+    <button class="close-x" onclick="closeAllModals()">&times;</button>
+    <h3>Sign Up</h3>
+    <div class="modal-sub">Create a free account to reserve cottages and pools.</div>
+    <div class="field"><label for="suName">Full name</label><input id="suName" placeholder="Juan Dela Cruz"></div>
+    <div class="field"><label for="suEmail">Email</label><input type="email" id="suEmail" placeholder="you@example.com"></div>
+    <div class="field"><label for="suContact">Contact number</label><input id="suContact" placeholder="09xx xxx xxxx"></div>
+    <div class="field"><label for="suPass">Password</label><input type="password" id="suPass" placeholder="At least 6 characters"></div>
+    <div class="err-msg" id="signupErr">Please check the fields above.</div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" style="width:100%" onclick="signupUser()">Create Account</button>
+    </div>
+    <div class="switch-line">Already have an account? <button onclick="openLoginModal()">Log in</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/render.js"></script>
+<script src="js/views.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/lookup.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

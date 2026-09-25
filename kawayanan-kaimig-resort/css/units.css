@@ -1,0 +1,53 @@
+/* Section headers and the cottage/pool unit grid */
+/* ---------- Section headers ---------- */
+.section-head{display:flex; align-items:baseline; justify-content:space-between; margin: 46px 0 18px; flex-wrap:wrap; gap:10px;}
+.section-head h2{font-family:var(--font-display); font-size:1.5rem; margin:0; color:var(--forest); font-weight:600;}
+.section-head .sub{font-size:0.85rem; color:var(--ink-soft);}
+.legend{display:flex; gap:14px; font-size:0.76rem; color:var(--ink-soft); flex-wrap:wrap;}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{width:9px; height:9px; border-radius:50%; display:inline-block;}
+
+/* ---------- Unit grid (grove board) ---------- */
+.grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:16px;}
+.card{
+  background: var(--cream); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px; display:flex; gap:14px; border:1px solid var(--line); position:relative; overflow:hidden;
+}
+.card .culm-bar{
+  width:10px; border-radius:6px; flex-shrink:0;
+  background-image: repeating-linear-gradient(180deg, currentColor 0 3px, transparent 3px 14px);
+  background-color: transparent;
+}
+.card.status-available .culm-bar{color: var(--available);}
+.card.status-reserved .culm-bar{color: var(--reserved);}
+.card.status-occupied .culm-bar{color: var(--occupied);}
+.card .body{flex:1; min-width:0;}
+.card .top-row{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.card h3{font-family:var(--font-display); font-size:1.05rem; margin:0 0 3px; color:var(--forest); font-weight:600;}
+.card .type{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-soft);}
+.badge{
+  font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.4px;
+  padding:4px 9px; border-radius:999px; white-space:nowrap;
+}
+.badge.status-available{color:var(--available); background:var(--available-bg);}
+.badge.status-reserved{color:var(--reserved); background:var(--reserved-bg);}
+.badge.status-occupied{color:var(--occupied); background:var(--occupied-bg);}
+.card .meta{font-size:0.8rem; color:var(--ink-soft); margin:10px 0 12px; line-height:1.5;}
+.card .meta strong{color:var(--ink);}
+.card .actions{display:flex; gap:8px; flex-wrap:wrap;}
+
+button{font-family:var(--font-body); cursor:pointer;}
+.btn{
+  border:none; border-radius:9px; padding:9px 15px; font-weight:600; font-size:0.82rem;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.btn:active{transform: scale(0.97);}
+.btn-primary{background: var(--forest); color: var(--cream);}
+.btn-primary:hover{opacity:0.9;}
+.btn-ghost{background: transparent; color: var(--forest); border:1px solid var(--line);}
+.btn-ghost:hover{background: rgba(31,58,46,0.05);}
+.btn-sm{padding:6px 11px; font-size:0.72rem; border-radius:7px;}
+.btn:disabled{opacity:0.4; cursor:not-allowed;}
+.btn-available{background:var(--available-bg); color:var(--available);}
+.btn-reserved{background:var(--reserved-bg); color:var(--reserved);}
+.btn-occupied{background:var(--occupied-bg); color:var(--occupied);}
