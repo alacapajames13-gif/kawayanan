@@ -1,0 +1,24 @@
+/* Staff dashboard */
+/* ---------- Admin ---------- */
+.gate{max-width:380px; margin: 90px auto; text-align:center; background:var(--cream); padding:36px 30px; border-radius:18px; box-shadow:var(--shadow);}
+.gate h2{font-family:var(--font-display); color:var(--forest); margin-top:0;}
+.gate p{color:var(--ink-soft); font-size:0.85rem;}
+.stats-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:14px; margin: 24px 0 10px;}
+.stat-card{background:var(--cream); border-radius:12px; padding:16px 18px; border:1px solid var(--line);}
+.stat-card .n{font-family:var(--font-display); font-size:1.9rem; font-weight:700; color:var(--forest);}
+.stat-card .l{font-size:0.74rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.4px;}
+table{width:100%; border-collapse:collapse; background:var(--cream); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);}
+th, td{text-align:left; padding:12px 14px; font-size:0.83rem; border-bottom:1px solid var(--line);}
+th{background: var(--bg-alt); color:var(--ink-soft); font-weight:600; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.4px;}
+tr:last-child td{border-bottom:none;}
+.table-wrap{overflow-x:auto;}
+.row-actions{display:flex; gap:6px; flex-wrap:wrap;}
+.empty{color:var(--ink-soft); font-size:0.85rem; padding:30px 0; text-align:center;}
+.toast{
+  position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--forest); color:var(--cream); padding:12px 22px; border-radius:10px; font-size:0.85rem;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25); z-index:200; opacity:0; pointer-events:none; transition:all 0.25s ease;
+  max-width:90vw; text-align:center;
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+footer{text-align:center; padding:30px; font-size:0.76rem; color:var(--ink-soft);}

@@ -1,0 +1,42 @@
+/* Sticky header, brand, tabs, auth chip */
+/* ---------- Header ---------- */
+header{
+  position: sticky; top:0; z-index:50;
+  background: var(--forest);
+  color: var(--cream);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.15);
+}
+.header-inner{
+  max-width:1180px; margin:0 auto;
+  padding: 14px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  flex-wrap:wrap;
+}
+.brand{display:flex; align-items:center; gap:12px; cursor:pointer;}
+.brand svg{width:34px; height:34px; flex-shrink:0;}
+.brand-text{line-height:1.05;}
+.brand-text .name{font-family:var(--font-display); font-weight:700; font-size:1.28rem; letter-spacing:0.2px;}
+.brand-text .tagline{font-size:0.72rem; color: rgba(251,247,236,0.65); letter-spacing:0.6px; text-transform:uppercase;}
+nav.tabs{display:flex; gap:6px; background: rgba(251,247,236,0.08); padding:4px; border-radius:999px;}
+nav.tabs button{
+  font-family: var(--font-body); font-weight:600; font-size:0.86rem;
+  background:transparent; color: rgba(251,247,236,0.75);
+  border:none; padding:9px 18px; border-radius:999px; cursor:pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+nav.tabs button.active{background: var(--culm); color: var(--forest);}
+nav.tabs button:not(.active):hover{background: rgba(251,247,236,0.12); color:var(--cream);}
+.clock{font-family:var(--font-mono); font-size:0.76rem; color: rgba(251,247,236,0.5); white-space:nowrap;}
+.header-right{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+.auth-actions{display:flex; align-items:center; gap:10px;}
+.user-chip{display:flex; align-items:center; gap:10px; font-size:0.84rem;}
+.user-chip .uname{font-weight:600; color:var(--cream);}
+.btn-outline-light{background:transparent; border:1px solid rgba(251,247,236,0.4); color:var(--cream);}
+.btn-outline-light:hover{background:rgba(251,247,236,0.12);}
+.btn-light{background:var(--culm); color:var(--forest);}
+.btn-light:hover{opacity:0.9;}
+@media (max-width:760px){ .clock{display:none;} }
+
+main{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding: 0 24px 80px;}
+.view{display:none;}
+.view.active{display:block;}
