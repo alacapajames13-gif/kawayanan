@@ -35,18 +35,20 @@ async function submitBooking(){
   document.getElementById('bookingErr').style.display = 'none';
 
   const code = genCode();
+  const expiresAt = Date.now() + HOLD_MINUTES * 60 * 1000;
   const reservation = {
     id: 'r_' + Date.now(),
     code, unitId: currentBookingUnit.id, unitName: currentBookingUnit.name,
     guestName: name, contact, date, guests, slot,
     userEmail: currentUser ? currentUser.email : null,
-    status: 'pending', createdAt: Date.now()
+    status: 'pending', createdAt: Date.now(), expiresAt
   };
   reservations.push(reservation);
   await saveReservations();
 
-  if(date === todayISO() && currentBookingUnit.status === 'available'){
+  if(currentBookingUnit.status !== 'occupied'){
     currentBookingUnit.status = 'reserved';
+    currentBookingUnit.expiresAt = expiresAt;
     await saveUnits();
   }
 
